@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>เรียนเทรดฟรี เปิดบัญชีเดโม่ฟรี | Pivora Academy</title>
+<meta content="Pivora Academy พื้นที่เรียนรู้การเทรดสำหรับผู้เริ่มต้น เรียนเทรดฟรี ทดลองเทรดฟรี ผ่านฝึกเทรดแบบจำลอง พร้อมเนื้อหาพื้นฐานและการใช้แพลตฟอร์มอย่างเป็นระบบ" name="description"/>
+<style>
+    :root{
+      --ivory:#F5F5DA;
+      --linen:#EAE9C8;
+      --crimson:#7B021D;
+      --bordeaux:#9A1228;
+      --gold:#A8834A;
+      --shadow:#1A0009;
+      --soft:#fffbea;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style:normal;
+      color:var(--shadow);
+      background:var(--ivory);
+      line-height:1.75;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.16;
+      background:
+        linear-gradient(90deg, transparent 0 7%, rgba(123,2,29,.14) 7.2% 7.35%, transparent 7.55% 14%),
+        repeating-linear-gradient(90deg, transparent 0 82px, rgba(168,131,74,.25) 84px, transparent 86px);
+      mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+    }
+    .page{position:relative;overflow:hidden}
+    .wrap{width:min(1120px,92vw);margin:auto}
+    .topbar{
+      padding:28px 0 14px;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .logo{
+      color:var(--crimson);
+      letter-spacing:9px;
+      font-weight:800;
+      font-size:32px;
+      line-height:1;
+    }
+    .logo span{display:block;font-size:13px;letter-spacing:7px;margin-top:8px;text-align:center}
+    .tagline{
+      color:var(--crimson);
+      font-size:12px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      text-align:right;
+      font-weight:700;
+    }
+    .hero{
+      min-height:530px;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:32px;
+      align-items:center;
+      padding:32px 0 48px;
+    }
+    .hero h1{
+      color:var(--crimson);
+      font-size:64px;
+      line-height:1.12;
+      margin:0 0 20px;
+      letter-spacing:-1px;
+    }
+    .hero h1 small{
+      display:block;
+      color:var(--shadow);
+      font-size:42px;
+      margin-top:6px;
+    }
+    .goldline{width:260px;height:2px;background:var(--gold);margin:22px 0}
+    .lead{font-size:21px;color:var(--gold);font-weight:700;margin:0 0 14px}
+    .hero p{font-size:18px;max-width:590px;margin:0}
+    .screen{
+      position:relative;
+      min-height:360px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .monitor{
+      width:470px;height:275px;background:#111;border:10px solid #222;border-radius:16px;
+      box-shadow:0 32px 60px rgba(26,0,9,.23);
+      padding:18px;
+      position:relative;
+    }
+    .chart{
+      width:100%;height:100%;
+      background:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size:34px 34px;
+      border-radius:8px;
+      position:relative;
+      overflow:hidden;
+    }
+    .candle{position:absolute;bottom:28px;width:10px;border-radius:2px}
+    .candle:before{content:"";position:absolute;left:4px;top:-18px;width:2px;height:calc(100% + 34px);background:currentColor;opacity:.8}
+    .green{background:#5aa56b;color:#5aa56b}.red{background:#b64b4b;color:#b64b4b}.gold{background:var(--gold);color:var(--gold)}
+    .phone,.tablet{
+      position:absolute;background:#141414;border:7px solid #202020;border-radius:18px;box-shadow:0 22px 40px rgba(26,0,9,.22)
+    }
+    .phone{width:88px;height:170px;left:24px;bottom:20px}
+    .tablet{width:210px;height:135px;right:4px;bottom:36px}
+    .mini-chart{position:absolute;inset:14px;background:linear-gradient(160deg, transparent, rgba(168,131,74,.15));border-radius:8px}
+    .section{padding:34px 0}
+    .section-title{
+      display:flex;align-items:center;gap:22px;justify-content:center;margin-bottom:26px
+    }
+    .section-title:before,.section-title:after{
+      content:"";height:1px;background:var(--gold);flex:1;max-width:330px;opacity:.7
+    }
+    h2{font-size:30px;color:var(--crimson);text-align:center;margin:0;line-height:1.35}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(168,131,74,.38);background:rgba(255,251,234,.45)}
+    .grid4.loose{border:none;background:transparent;gap:20px}
+    .card{
+      padding:28px 24px;text-align:center;border-right:1px solid rgba(168,131,74,.35);
+    }
+    .card:last-child{border-right:none}
+    .icon{
+      width:48px;height:48px;margin:0 auto 14px;border:2px solid var(--gold);border-radius:14px;
+      display:grid;place-items:center;color:var(--gold);font-size:23px;font-weight:700
+    }
+    .card h3{font-size:17px;margin:0 0 8px;color:var(--shadow)}
+    .card p{font-size:15px;margin:0}
+    .timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;text-align:center}
+    .step{position:relative;padding:16px 10px}
+    .num{width:38px;height:38px;border-radius:50%;background:var(--crimson);color:var(--ivory);display:grid;place-items:center;margin:0 auto 14px;font-weight:800;border:2px solid var(--gold)}
+    .step h3{font-size:15px;margin:0 0 8px}
+    .step p{font-size:14px;margin:0}
+    .deep{
+      margin-top:30px;
+      background:linear-gradient(120deg,var(--crimson),#5b0014);
+      color:var(--ivory);
+      padding:44px 0;
+      position:relative;
+      overflow:hidden;
+    }
+    .deep:after{
+      content:"";
+      position:absolute;right:0;bottom:0;width:46%;height:100%;
+      opacity:.35;
+      background:repeating-linear-gradient(90deg, transparent 0 24px, var(--gold) 25px 31px, transparent 32px 56px);
+      clip-path:polygon(20% 100%,100% 30%,100% 100%);
+    }
+    .deepgrid{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:50px}
+    .deep h2{text-align:left;color:white;font-size:34px}
+    .deep .goldline{background:var(--gold)}
+    .deep p{font-size:17px;margin:0}
+    .reasons{display:grid;gap:18px}
+    .reason{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start}
+    .reason b{color:var(--gold)}
+    .badge{width:38px;height:38px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:800}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-right:1px solid rgba(168,131,74,.25);border-bottom:1px solid rgba(168,131,74,.25)}
+    .benefit{padding:22px;text-align:center;border-left:1px solid rgba(168,131,74,.25);border-top:1px solid rgba(168,131,74,.25)}
+    .benefit h3{font-size:15px;margin:8px 0 3px;color:var(--crimson)}
+    .benefit p{font-size:13px;margin:0}
+    .faq{display:grid;gap:10px}
+    .faq-item{background:rgba(255,251,234,.65);border:1px solid rgba(168,131,74,.20);padding:14px 18px;border-radius:12px}
+    .faq-item b{color:var(--crimson)}
+    footer{background:var(--crimson);color:var(--ivory);padding:24px 0;margin-top:28px;text-align:center}
+    footer .logo{font-size:22px;color:var(--ivory)}
+    footer p{margin:8px 0 0;font-size:13px}
+    @media(max-width:900px){
+      .hero,.deepgrid,.two{grid-template-columns:1fr}
+      .hero h1{font-size:46px}.hero h1 small{font-size:32px}
+      .grid4,.timeline{grid-template-columns:1fr 1fr}
+      .card{border-bottom:1px solid rgba(168,131,74,.35)}
+      .monitor{width:100%;height:250px}.phone,.tablet{display:none}
+    }
+    @media(max-width:560px){
+      .grid4,.timeline,.benefits{grid-template-columns:1fr}
+      .topbar{align-items:flex-start;gap:12px;flex-direction:column}
+      .tagline{text-align:left}
+      .hero h1{font-size:38px}.hero h1 small{font-size:27px}
+    }
+  
+.article-box{max-width:900px;margin:0 auto;padding:34px 38px;background:rgba(255,251,234,.72);border:1px solid rgba(168,131,74,.32);border-radius:18px}.article-box p{font-size:18px;margin:0 0 18px}.article-box p:last-child{margin-bottom:0}
+
+/* === IMAGE ENHANCEMENTS === */
+
+/* Hero Banner */
+.hero-banner{
+  position:relative;
+  overflow:hidden;
+  margin-bottom:0;
+}
+.hero-banner-img{
+  width:100%;
+  max-height:520px;
+  object-fit:cover;
+  object-position:center 30%;
+  display:block;
+  border-radius:0;
+  filter:brightness(.55) saturate(1.1);
+}
+.hero-banner-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(26,0,9,.82) 0%, rgba(26,0,9,.45) 55%, rgba(26,0,9,.10) 100%);
+  pointer-events:none;
+}
+.hero-banner .wrap.hero{
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  display:flex;
+  align-items:center;
+}
+.hero-banner .wrap.hero > div:first-child{
+  position:relative;z-index:2;
+}
+.hero-banner .wrap.hero .screen{
+  position:relative;z-index:2;
+}
+.hero-banner .hero h1{color:#fff; text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero-banner .hero p{color:rgba(255,255,255,.92)}
+.hero-banner .hero .lead{color:var(--gold)}
+
+/* Section image strips */
+.img-strip{
+  width:100%;
+  max-height:280px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  border-radius:14px;
+  margin-bottom:28px;
+  box-shadow:0 8px 32px rgba(26,0,9,.14);
+}
+.img-strip-sm{
+  width:100%;
+  max-height:200px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 6px 24px rgba(26,0,9,.12);
+}
+
+/* Card with image */
+.card-img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:10px 10px 0 0;
+  display:block;
+  margin:-28px -24px 18px;
+  width:calc(100% + 48px);
+}
+
+/* Article with side image */
+.article-with-img{
+  display:grid;
+  grid-template-columns:1.6fr 1fr;
+  gap:32px;
+  align-items:center;
+  max-width:900px;
+  margin:0 auto;
+}
+.article-with-img .article-box{
+  max-width:none;
+  margin:0;
+}
+.article-side-img{
+  width:100%;
+  height:340px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:16px;
+  box-shadow:0 12px 40px rgba(26,0,9,.18);
+  display:block;
+}
+
+/* Section image row above timeline */
+.timeline-img-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:28px;
+}
+.timeline-img-row img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 6px 22px rgba(26,0,9,.13);
+  display:block;
+}
+
+/* Deep section background image */
+.deep-bg-img{
+  position:absolute;
+  right:0;top:0;height:100%;width:52%;
+  object-fit:cover;
+  object-position:center;
+  opacity:.13;
+  pointer-events:none;
+}
+
+/* Benefits section image */
+.benefits-img{
+  width:100%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:14px;
+  display:block;
+  margin-bottom:24px;
+  box-shadow:0 8px 28px rgba(26,0,9,.15);
+}
+
+/* FAQ illustration */
+.faq-header-img{
+  width:100%;
+  max-height:180px;
+  object-fit:cover;
+  object-position:center 40%;
+  border-radius:14px;
+  display:block;
+  margin-bottom:22px;
+  box-shadow:0 8px 28px rgba(26,0,9,.12);
+}
+
+/* Target audience image grid */
+.audience-img-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-bottom:24px;
+}
+.audience-img-row img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:10px;
+  box-shadow:0 4px 16px rgba(26,0,9,.12);
+  display:block;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .article-with-img{grid-template-columns:1fr}
+  .article-side-img{height:200px}
+  .timeline-img-row{grid-template-columns:1fr 1fr}
+  .hero-banner{height:auto!important}
+  .hero-banner .wrap.hero{position:relative;top:auto;left:auto;right:auto;bottom:auto;padding:32px 0 48px}
+  .hero-banner-img{display:none}
+  .hero-banner-overlay{display:none}
+  .hero-banner .hero h1{color:var(--crimson);text-shadow:none}
+  .hero-banner .hero p{color:var(--shadow)}
+}
+@media(max-width:560px){
+  .timeline-img-row{grid-template-columns:1fr}
+  .audience-img-row{grid-template-columns:1fr}
+  .deep-bg-img{display:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="wrap topbar">
+<div class="logo">PIVORA<span>ACADEMY</span></div>
+<div class="tagline">Master the Pivot.<br/>Own the Light.</div>
+</header>
+<main>
+<!-- Hero Banner with background trading image -->
+<section class="hero-banner" style="min-height:530px;position:relative;">
+  <img
+    src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=75&auto=format&fit=crop"
+    alt="Trading charts on multiple screens"
+    class="hero-banner-img"
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;"
+    loading="eager"
+  />
+  <div class="hero-banner-overlay"></div>
+<section class="wrap hero">
+<div>
+<h1>เรียนเทรดฟรี<small>พร้อมสอนเปิดบัญชีเดโม่</small></h1>
+<div class="goldline"></div>
+<p class="lead">เริ่มต้นอย่างมีหลักการ ก่อนเข้าสู่การเทรดจริง</p>
+<p>Pivora Academy ถ่ายทอดความรู้ด้านการเทรดในมุมมองของผู้เชี่ยวชาญ โดยเรียบเรียงให้เข้าใจง่าย เหมาะสำหรับผู้เริ่มต้นที่ต้องการวางพื้นฐานอย่างถูกต้อง เรามีคอร์สเรียนฟรี พร้อมแนะนำการเปิดบัญชีเดโม่ เพื่อให้ผู้เรียนได้ฝึกใช้งานแพลตฟอร์ม อ่านกราฟ วางแผน และทดลองกลยุทธ์ในสภาพแวดล้อมจำลองก่อนใช้งานจริง</p>
+</div>
+<div aria-hidden="true" class="screen">
+<div class="monitor">
+<div class="chart">
+<div class="candle green" style="left:20px;height:70px"></div>
+<div class="candle red" style="left:55px;height:45px"></div>
+<div class="candle green" style="left:90px;height:92px"></div>
+<div class="candle gold" style="left:130px;height:120px"></div>
+<div class="candle red" style="left:175px;height:80px"></div>
+<div class="candle green" style="left:220px;height:135px"></div>
+<div class="candle green" style="left:270px;height:160px"></div>
+<div class="candle red" style="left:320px;height:115px"></div>
+<div class="candle gold" style="left:365px;height:175px"></div>
+</div>
+</div>
+<div class="phone"><div class="mini-chart"></div></div>
+<div class="tablet"><div class="mini-chart"></div></div>
+</div>
+</section>
+</section>
+<!-- End Hero Banner -->
+<section class="wrap section">
+<div class="section-title"><h2>ทำไมต้องเริ่มจากบัญชีเดโม่</h2></div>
+<img
+  src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=1200&q=75&auto=format&fit=crop"
+  alt="Trading platform dashboard with candlestick charts"
+  class="img-strip"
+  loading="lazy"
+/>
+<div class="grid4">
+<div class="card"><div class="icon">↗</div><h3>ฝึกผ่านบัญชีเดโม่ฟรี</h3><p>เรียนรู้ขั้นตอนการเปิดบัญชีเดโม่ และฝึกใช้งานจริงในระบบจำลอง</p></div>
+<div class="card"><div class="icon">⌕</div><h3>เข้าใจตลาดด้วยภาษาที่ง่าย</h3><p>อธิบายกราฟ แท่งเทียน แนวโน้ม และจังหวะตลาดแบบเป็นขั้นตอน</p></div>
+<div class="card"><div class="icon">✓</div><h3>เรียนรู้การใช้แพลตฟอร์ม</h3><p>เข้าใจหลักการจำกัดความเสี่ยง วางแผนก่อนเทรด และไม่ตัดสินใจด้วยอารมณ์</p></div>
+<div class="card"><div class="icon">▣</div><h3>มีคอร์สพื้นฐานให้เรียนฟรี</h3><p>เนื้อหาออกแบบสำหรับมือใหม่ ตั้งแต่เริ่มต้นจนสามารถทดลองเทรดได้ด้วยตนเอง</p></div>
+</div>
+</section>
+<section class="wrap section">
+<div class="section-title"><h2>คอร์สนี้เหมาะกับใคร</h2></div>
+<div class="audience-img-row">
+  <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=75&auto=format&fit=crop" alt="Investor analyzing stock market charts" loading="lazy"/>
+  <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&q=75&auto=format&fit=crop" alt="Person learning trading on laptop" loading="lazy"/>
+</div>
+<div class="grid4">
+<div class="card"><div class="icon">♙</div><h3>ผู้ที่เริ่มต้นจากศูนย์</h3><p>ต้องการเข้าใจการเทรดตั้งแต่พื้นฐาน โดยไม่ใช้ศัพท์ซับซ้อน</p></div>
+<div class="card"><div class="icon">◎</div><h3>ผู้ที่อยากทดลองก่อนใช้งานจริง</h3><p>ต้องการเปิดบัญชีเดโม่และฝึกฝนก่อนตัดสินใจในขั้นต่อไป</p></div>
+<div class="card"><div class="icon">▤</div><h3>ผู้ที่ต้องการระบบการเรียนรู้</h3><p>ต้องการแนวทางเรียนที่เรียงลำดับชัดเจน ไม่กระโดดข้ามพื้นฐานสำคัญ</p></div>
+<div class="card"><div class="icon">◇</div><h3>ผู้ที่อยากพัฒนาความมั่นใจ</h3><p>ต้องการฝึกอ่านตลาด วางแผน และประเมินความเสี่ยงอย่างมีเหตุผล</p></div>
+</div>
+</section>
+<section class="wrap section">
+<div class="section-title"><h2>สิ่งที่ผู้เรียนจะได้รับในคอร์สฟรี</h2></div>
+<div class="timeline-img-row">
+  <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=500&q=75&auto=format&fit=crop" alt="Technical analysis candlestick charts" loading="lazy"/>
+  <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&q=75&auto=format&fit=crop" alt="Multiple trading monitor screens" loading="lazy"/>
+  <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=500&q=75&auto=format&fit=crop" alt="Forex and crypto trading charts" loading="lazy"/>
+</div>
+<div class="timeline">
+<div class="step"><div class="num">1</div><h3>ภาพรวมตลาดเทรด</h3><p>เข้าใจว่าตลาดทำงานอย่างไร และผู้เริ่มต้นควรรู้อะไรก่อน</p></div>
+<div class="step"><div class="num">2</div><h3>วิธีอ่านกราฟเบื้องต้น</h3><p>เรียนรู้แท่งเทียน แนวรับ แนวต้าน และการเปิดบัญชีเดโม่</p></div>
+<div class="step"><div class="num">3</div><h3>การเปิดบัญชีเดโม่</h3><p>แนะนำขั้นตอนเปิดฝึกเทรดแบบจำลองและการตั้งค่าพื้นฐาน</p></div>
+<div class="step"><div class="num">4</div><h3>การใช้แพลตฟอร์ม</h3><p>ทำความรู้จักหน้าจอ คำสั่ง และเครื่องมือที่จำเป็น</p></div>
+<div class="step"><div class="num">5</div><h3>แผนการเทรด</h3><p>ฝึกวางเหตุผลก่อนเข้าเทรด พร้อมกำหนดจุดเข้า จุดออก และความเสี่ยง</p></div>
+<div class="step"><div class="num">6</div><h3>ฝึกเทรดแบบจำลอง</h3><p>ทดลองใช้ความรู้กับบัญชีเดโม่ เพื่อสร้างประสบการณ์ก่อนใช้งานจริง</p></div>
+</div>
+</section>
+<section class="wrap section article">
+<div class="section-title"><h2>บทความจากมุมมองผู้เชี่ยวชาญ</h2></div>
+<div class="article-with-img">
+<div class="article-box">
+<p>ผู้เริ่มต้นจำนวนมากมักให้ความสำคัญกับคำถามว่า “ควรเข้าเทรดตรงไหน” แต่ในมุมมองของผู้เชี่ยวชาญ คำถามที่สำคัญกว่าคือ “เพราะอะไรจึงควรเข้าเทรด” การมีเหตุผลรองรับทุกการตัดสินใจ คือจุดเริ่มต้นของการเทรดอย่างมีระบบ</p>
+<p>การเรียนก่อนเทรดจริงช่วยให้ผู้เรียนเข้าใจโครงสร้างของตลาด เช่น แนวโน้มราคา แรงซื้อแรงขาย ระดับราคาสำคัญ และพฤติกรรมของแท่งเทียน เมื่อเข้าใจสิ่งเหล่านี้ ผู้เรียนจะไม่มองกราฟเป็นเพียงเส้นที่ขึ้นลง แต่จะเริ่มอ่านบริบทของตลาดได้ชัดเจนขึ้น</p>
+<p>บัญชีเดโม่จึงเป็นเครื่องมือสำคัญสำหรับมือใหม่ เพราะช่วยให้ฝึกวิเคราะห์ ฝึกวางแผน และฝึกควบคุมอารมณ์ในสถานการณ์ที่ใกล้เคียงการใช้งานจริง โดย Pivora Academy มีคอร์สฟรีที่ช่วยพาผู้เรียนเริ่มต้นตั้งแต่พื้นฐาน ไปจนถึงการทดลองใช้งานบัญชีเดโม่อย่างเป็นขั้นตอน</p>
+</div>
+<img
+  src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=600&q=75&auto=format&fit=crop"
+  alt="Expert trader analyzing financial charts and risk management"
+  class="article-side-img"
+  loading="lazy"
+/>
+</div>
+</section>
+<section class="deep">
+<img
+  src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1400&q=70&auto=format&fit=crop"
+  alt="Risk management and trading analysis"
+  class="deep-bg-img"
+  aria-hidden="true"
+  loading="lazy"
+/>
+<div class="wrap deepgrid">
+<div>
+<h2>ความจำเป็นของการเรียนรู้<br/>ก่อนการเทรดจริง</h2>
+<div class="goldline"></div>
+<p>ในมุมมองของผู้เชี่ยวชาญ การเทรดไม่ใช่การคาดเดาทิศทางราคา แต่คือกระบวนการวิเคราะห์ วางแผน และควบคุมความเสี่ยงอย่างเป็นระบบ ผู้เริ่มต้นจึงควรเรียนรู้หลักการพื้นฐานก่อน เพื่อเข้าใจว่าควรดูอะไร ควรหลีกเลี่ยงอะไร และควรตัดสินใจภายใต้เงื่อนไขแบบใด</p>
+</div>
+<div class="reasons">
+<div class="reason"><div class="badge">1</div><p><b>เข้าใจตลาดก่อนตัดสินใจ</b><br/>ผู้เรียนจะรู้ว่าราคาเคลื่อนไหวจากปัจจัยใด และไม่ตีความกราฟจากความรู้สึกเพียงอย่างเดียว</p></div>
+<div class="reason"><div class="badge">2</div><p><b>ลดข้อผิดพลาดของมือใหม่</b><br/>การเรียนพื้นฐานช่วยลดความผิดพลาด เช่น เข้าเทรดโดยไม่มีแผน ใช้ขนาดการเทรดไม่เหมาะสม หรือไม่กำหนดความเสี่ยง</p></div>
+<div class="reason"><div class="badge">3</div><p><b>ฝึกวินัยผ่านบัญชีเดโม่</b><br/>บัญชีเดโม่ช่วยให้ทดลองวางแผนและทบทวนผลลัพธ์ โดยยังไม่ต้องใช้งานจริงทันที</p></div>
+<div class="reason"><div class="badge">4</div><p><b>สร้างพื้นฐานสำหรับการเรียนต่อ</b><br/>ฝึกเทรดแบบจำลองช่วยให้ทดสอบกลยุทธ์และปรับตัวเข้ากับสภาวะตลาด</p></div>
+</div>
+</div>
+</section>
+<section class="wrap section two">
+<div>
+<div class="section-title"><h2>สิ่งที่ Pivora Academy ช่วยคุณได้</h2></div>
+<img
+  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=700&q=75&auto=format&fit=crop"
+  alt="Professional trading education and mentorship"
+  class="benefits-img"
+  loading="lazy"
+/>
+<div class="benefits">
+<div class="benefit"><div class="icon">✦</div><h3>คอร์สเรียนฟรี</h3><p>ปูพื้นฐานการเทรดสำหรับมือใหม่</p></div>
+<div class="benefit"><div class="icon">◇</div><h3>สอนเปิดบัญชีเดโม่</h3><p>ผ่านฝึกเทรดแบบจำลอง</p></div>
+<div class="benefit"><div class="icon">✧</div><h3>อธิบายเข้าใจง่าย</h3><p>ใช้ภาษาง่าย ไม่ซับซ้อน</p></div>
+<div class="benefit"><div class="icon">☏</div><h3>แนวคิดแบบผู้เชี่ยวชาญ</h3><p>เน้นเหตุผล แผน และความเสี่ยง</p></div>
+<div class="benefit"><div class="icon">▣</div><h3>เรียนออนไลน์ได้</h3><p>เหมาะกับผู้เริ่มต้นที่มีเวลาจำกัด</p></div>
+<div class="benefit"><div class="icon">✓</div><h3>พร้อมเริ่มฝึกได้ทันที</h3><p>นำความรู้ไปทดลองในบัญชีเดโม่</p></div>
+</div>
+</div>
+<div>
+<div class="section-title"><h2>คำถามที่พบบ่อยสำหรับนักเทรดมือใหม่</h2></div>
+<img
+  src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=75&auto=format&fit=crop&crop=top"
+  alt="Trading psychology and discipline"
+  class="faq-header-img"
+  loading="lazy"
+/>
+<div class="faq"><div class="faq-item"><b>มือใหม่ไม่รู้จะเริ่มเรียนจากตรงไหน ควรทำอย่างไร?</b><br/>ควรเริ่มจากพื้นฐานก่อน เช่น โครงสร้างตลาด การอ่านกราฟแท่งเทียน แนวรับแนวต้าน และความหมายของคำสั่งซื้อขาย จากนั้นค่อยฝึกวางแผนผ่านบัญชีเดโม่ Pivora Academy จัดคอร์สฟรีให้เรียนเป็นลำดับ เพื่อให้ผู้เริ่มต้นไม่สับสนและไม่ข้ามขั้นตอนสำคัญ</div><div class="faq-item"><b>เปิดบัญชีเดโม่ยากไหม และต้องเตรียมอะไรบ้าง?</b><br/>ไม่ยาก บัญชีเดโม่คือบัญชีทดลองสำหรับฝึกใช้งานแพลตฟอร์มและจำลองสถานการณ์เทรดจริง ผู้เรียนจะได้รับคำแนะนำตั้งแต่ขั้นตอนการเปิดบัญชี การตั้งค่าพื้นฐาน การดูกราฟ ไปจนถึงการทดลองส่งคำสั่ง เพื่อให้เริ่มฝึกได้อย่างมั่นใจ</div><div class="faq-item"><b>ทำไมฝึกในบัญชีเดโม่แล้วยังเทรดจริงได้ไม่ดี?</b><br/>เพราะบัญชีเดโม่ช่วยฝึกทักษะด้านระบบและการวิเคราะห์ แต่การเทรดจริงมีเรื่องอารมณ์ ความกดดัน และวินัยเข้ามาเกี่ยวข้อง แนวทางแก้ไขคือจดบันทึกแผนการเทรดทุกครั้ง ฝึกทำตามแผนเดิมซ้ำ ๆ และประเมินผลจากเหตุผล ไม่ใช่จากผลลัพธ์ระยะสั้น</div><div class="faq-item"><b>ปัญหาที่มือใหม่เจอบ่อยคือเข้าเทรดเร็วเกินไป แก้อย่างไร?</b><br/>ให้เปลี่ยนจากการมองหาโอกาสทันที มาเป็นการรอเงื่อนไขให้ครบก่อน เช่น แนวโน้มชัดเจน จุดเข้าเหมาะสม จุดตัดขาดทุนชัดเจน และความเสี่ยงอยู่ในระดับที่ควบคุมได้ การมี Checklist ก่อนเข้าเทรดจะช่วยลดการตัดสินใจจากอารมณ์</div><div class="faq-item"><b>ถ้าเทรดแล้วขาดวินัย ควรเริ่มแก้จากจุดไหน?</b><br/>เริ่มจากการลดความซับซ้อนของแผน เลือกฝึกเพียงหนึ่งกลยุทธ์ในบัญชีเดโม่ กำหนดจำนวนครั้งในการเทรดต่อวัน และบันทึกเหตุผลทุกครั้งก่อนเข้าเทรด เมื่อทำซ้ำอย่างต่อเนื่อง ผู้เรียนจะเริ่มเห็นพฤติกรรมของตัวเองและปรับปรุงได้เป็นระบบมากขึ้น</div></div>
+</div>
+</section>
+</main>
+<footer>
+<div class="logo">PIVORA<span>ACADEMY</span></div>
+<p>Master the Pivot. Own the Light.</p>
+<p>© 2025 Pivora Academy. All rights reserved.</p>
+</footer>
+</div>
+</body>
+</html>
